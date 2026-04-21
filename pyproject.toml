@@ -4,18 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sphericaltexture_plugin"
-version = "0.0.3"
-authors = [{name="Oane Gros", email="oane.gros@embl.de" }]
+version = "0.0.5"
+authors = [{name="Aafke Gros", email="aafke.gros@embl.de" }]
 description = "Maps each object to a sphere/circle by mean intensity projection, and quantifies the distribution of the intensity signal in the projection through Spherical Harmonics/Fourier decomposition, or exposes polarization direction."
 readme = "README.md"
 
 # TODO: Add your dependencies here:
-dependencies = ["ilastik", "typing_extensions", "sphericaltexture"]
-requires-python = ">=3.9"
+dependencies = ["ilastik-core", "typing_extensions", "sphericaltexture"]
+requires-python = ">=3.10"
 
 
-[project.entry-points."ilastik.objectfeatures"]
-sphericaltexture_plugin = "sphericaltexture_plugin"
-
-[tool.setuptools.package-data]
-sphericaltexture_plugin = ["*.yapsy-plugin"]
+[project.entry-points."ilastik.objectfeature_plugins"]
+sphericaltexture_plugin = "sphericaltexture_plugin.objfeat_sphericaltexture:ObjFeatSphericalTexture"

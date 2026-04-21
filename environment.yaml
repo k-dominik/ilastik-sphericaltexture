@@ -4,9 +4,9 @@ channels:
   - nodefaults
 
 dependencies:
-  - python 3.9.*
+  - python 3.13.*
   - pip
-  - ilastik
+  - ilastik-core
   - typing_extensions
   - pytest
   - sphericaltexture

@@ -1,35 +1,27 @@
-from typing import Dict, List
+import textwrap
+from typing import Dict
 
 from typing_extensions import NotRequired, TypedDict
 
 import numpy
-import numpy.typing as numpyt
 import vigra
-from ilastik.plugins.types import ObjectFeaturesPlugin
+from ilastik.plugins.types import ObjectFeaturesPlugin, FeatureDescription, PluginInfo
 
 from sphericaltexture import SphericalTextureGenerator
-
-
-class FeatureDescription(TypedDict):
-    displaytext: str
-    detailtext: str
-    tooltip: str
-    advanced: bool
-    group: NotRequired[str]
-    margin: NotRequired[int]
-    # features are assumed to be able to do 2D and 3D. If your feature
-    # cannot do one of them, you can mark those accordingly by setting
-    # one of those keys in the feature description
-    no_3D: NotRequired[bool]
-    no_2D: NotRequired[bool]
-    # if raw data is accessed for your feature, the most of the
-    channel_aware: NotRequired[bool]
 
 
 class ObjFeatSphericalTexture(ObjectFeaturesPlugin):
     """Plugins of this class calculate object features."""
 
-    name = "Spherical Texture"
+    plugin_info = PluginInfo(
+        name="Spherical Texture",
+        author="Aafke Gros",
+        version="0.0.2",
+        description=textwrap.dedent("""
+            Maps each object to a sphere/circle by mean intensity projection, and quantifies the distribution of the intensity
+            signal in the projection through Spherical Harmonics/Fourier decomposition, or exposes polarization direction.
+            """)
+    )
 
     _feature_dict: Dict[str, FeatureDescription] = {
         "Spherical Spectrum": {
