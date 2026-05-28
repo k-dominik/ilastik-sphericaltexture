@@ -4,15 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sphericaltexture_plugin"
-version = "0.0.5"
+version = "0.1.0"
 authors = [{name="Aafke Gros", email="aafke.gros@embl.de" }]
 description = "Maps each object to a sphere/circle by mean intensity projection, and quantifies the distribution of the intensity signal in the projection through Spherical Harmonics/Fourier decomposition, or exposes polarization direction."
 readme = "README.md"
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
 
-# TODO: Add your dependencies here:
-dependencies = ["ilastik-core", "typing_extensions", "sphericaltexture"]
+dependencies = ["typing_extensions", "sphericaltexture"]
 requires-python = ">=3.10"
 
+[project.optional-dependencies]
+dev = ["pytest", "ilastik-core"]
+
+[tool.setuptools]
+packages = ["sphericaltexture_plugin"]
 
 [project.entry-points."ilastik.objectfeature_plugins"]
 sphericaltexture_plugin = "sphericaltexture_plugin.objfeat_sphericaltexture:ObjFeatSphericalTexture"

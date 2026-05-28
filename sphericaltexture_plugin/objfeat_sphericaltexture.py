@@ -16,7 +16,7 @@ class ObjFeatSphericalTexture(ObjectFeaturesPlugin):
     plugin_info = PluginInfo(
         name="Spherical Texture",
         author="Aafke Gros",
-        version="0.0.2",
+        version="0.1.0",
         description=textwrap.dedent("""
             Maps each object to a sphere/circle by mean intensity projection, and quantifies the distribution of the intensity
             signal in the projection through Spherical Harmonics/Fourier decomposition, or exposes polarization direction.

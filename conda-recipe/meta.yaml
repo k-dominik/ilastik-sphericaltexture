@@ -41,4 +41,6 @@ test:
   source_files:
     - tests
   requires:
-    - pytest
+    {% for dev_dep in pp.get('optional-dependencies')['dev'] %}
+    - {{ dev_dep.lower() }}
+    {% endfor %}
